@@ -1,4 +1,4 @@
-package com.underworld.apispring.resources;
+package com.underworld.apispring.controllers;
 
 import com.underworld.apispring.models.Artist;
 import com.underworld.apispring.repository.ArtistRepository;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping(value = "/api")
 @Api(value = "API SPRING BOOT")
 @CrossOrigin(origins = "*")
-public class ArtistResource {
+public class ArtistController {
 
     @Autowired
     ArtistRepository artistRepository;

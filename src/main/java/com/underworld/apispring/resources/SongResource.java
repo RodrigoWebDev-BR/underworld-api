@@ -1,4 +1,4 @@
-package com.underworld.apispring.resources;
+package com.underworld.apispring.controllers;
 
 import com.underworld.apispring.models.Song;
 import com.underworld.apispring.repository.SongRepository;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping(value = "/api")
 @Api(value = "API SPRING BOOT")
 @CrossOrigin(origins = "*")
-public class SongResource {
+public class SongController {
 
     @Autowired
     SongRepository songRepository;
@@ -24,26 +24,26 @@ public class SongResource {
         return songRepository.findAll();
     }
 
-    @GetMapping("song/{id}")
+    @GetMapping("/song/{id}")
     @ApiOperation(value = "Return One Song")
     public Song songListById(@PathVariable(value="id") long id) {
         return songRepository.findById(id);
     }
 
-    @PostMapping("/song")
+    @PostMapping("/artist/{artistId}/album/{albumId}/song")
     @ApiOperation(value = "Insert Song")
     public Song newSong(@RequestBody Song newSong) {
         return songRepository.save(newSong);
     }
 
-    @PutMapping("/song/{id}")
+    @PutMapping("/artist/{artistId}/album/{albumId}/song/{id}")
     @ApiOperation(value = "Update Song")
     public Song updateSong(@RequestBody Song newSong, @PathVariable Long id) {
         return songRepository.findById(id)
                 .map(song -> {
-                    song.setTrackName(newSong.getTrackName());
                     song.setArtistId(newSong.getArtistId());
                     song.setAlbumId(newSong.getAlbumId());
+                    song.setTrackName(newSong.getTrackName());
                     song.setAudio(newSong.getAudio());
                     song.setDuration(newSong.getDuration());
                     return songRepository.save(song);
