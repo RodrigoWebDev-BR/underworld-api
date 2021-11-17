@@ -1,4 +1,4 @@
-package com.underworld.apispring.controllers;
+package com.underworld.apispring.resources;
 
 import com.underworld.apispring.models.Album;
 import com.underworld.apispring.repository.AlbumRepository;
@@ -41,7 +41,7 @@ public class AlbumResourse {
     public Album updateAlbum(@RequestBody Album newAlbum, @PathVariable Long id) {
         return albumRepository.findById(id)
                 .map(album -> {
-                    album.setArtistId(newAlbum.getArtistId());
+                    album.setArtist(newAlbum.getArtist());
                     album.setTitle(newAlbum.getTitle());
                     album.setAlbumCover(newAlbum.getAlbumCover());
                     album.setNumberOfTracks(newAlbum.getNumberOfTracks());

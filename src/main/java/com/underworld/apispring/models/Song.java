@@ -3,7 +3,6 @@ package com.underworld.apispring.models;
 import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Time;
 import java.util.Set;
 
 @Entity
@@ -57,27 +56,27 @@ public class Song implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "artist_id")
-    private Artist artistId;
+    @JoinColumn(name = "artist_id", referencedColumnName = "id")
+    private Artist artist;
 
-    public Artist getArtistId() {
-        return artistId;
+    public Artist getArtist() {
+        return artist;
     }
 
-    public void setArtistId(Artist artistId) {
-        this.artistId = artistId;
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "album_id")
-    private Album albumId;
+    @JoinColumn(name = "album_id", referencedColumnName = "id")
+    private Album album;
 
-    public Album getAlbumId() {
-        return albumId;
+    public Album getAlbum() {
+        return album;
     }
 
-    public void setAlbumId(Album albumId) {
-        this.albumId = albumId;
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 
     @ManyToMany(mappedBy = "playlist")

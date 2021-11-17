@@ -1,4 +1,4 @@
-package com.underworld.apispring.controllers;
+package com.underworld.apispring.resources;
 
 import com.underworld.apispring.models.Song;
 import com.underworld.apispring.repository.SongRepository;
@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping(value = "/api")
 @Api(value = "API SPRING BOOT")
 @CrossOrigin(origins = "*")
-public class SongController {
+public class SongResource {
 
     @Autowired
     SongRepository songRepository;
@@ -41,8 +41,8 @@ public class SongController {
     public Song updateSong(@RequestBody Song newSong, @PathVariable Long id) {
         return songRepository.findById(id)
                 .map(song -> {
-                    song.setArtistId(newSong.getArtistId());
-                    song.setAlbumId(newSong.getAlbumId());
+                    song.setArtist(newSong.getArtist());
+                    song.setAlbum(newSong.getAlbum());
                     song.setTrackName(newSong.getTrackName());
                     song.setAudio(newSong.getAudio());
                     song.setDuration(newSong.getDuration());

@@ -23,10 +23,10 @@ public class Artist implements Serializable {
         this.id = id;
     }
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "artist")
     private Set<Album> albums;
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "artist")
     private Set<Song> songs;
 
     @NotNull

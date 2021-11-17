@@ -19,7 +19,7 @@ import java.util.ArrayList;
 @EnableSwagger2
 public class SwaggerConfig {
     @Bean
-    public Docket artistApi() {
+    public Docket underworldApi() {
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.any())
@@ -37,7 +37,7 @@ public class SwaggerConfig {
                 "1.0",
                 "Terms of Service",
                 new Contact("Rodrigo Cruz",
-                        "https://rodrigowebdev.netlify.com",
+                        "https://rodrigowebdev.netlify.app/",
                         "cruz213.rodrigo@gmail.com"),
 
                 "Apache License Version 2.0",

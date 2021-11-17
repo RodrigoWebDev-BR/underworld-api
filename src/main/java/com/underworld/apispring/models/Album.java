@@ -81,18 +81,18 @@ public class Album implements Serializable {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "artist_id")
-    private Artist artistId;
+    @JoinColumn(name = "artist_id", referencedColumnName = "id")
+    private Artist artist;
 
-    public Artist getArtistId() {
-        return artistId;
+    public Artist getArtist() {
+        return artist;
     }
 
-    public void setArtistId(Artist artistId) {
-        this.artistId = artistId;
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "album")
     private Set<Song> songs;
 
 }
